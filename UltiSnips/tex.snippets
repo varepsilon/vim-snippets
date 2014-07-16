@@ -2,27 +2,52 @@ priority -50
 
 extends texmath
 
-snippet "b(egin)?" "begin{} / end{}" br
+
+snippet r "\\ref{}" w
+\ref{$1}
+endsnippet
+
+
+#################
+# GENERAL STUFF #
+#################
+snippet "beg(in)?" "begin{} / end{}" br
 \begin{${1:something}}
 	${0:${VISUAL}}
 \end{$1}
 endsnippet
 
-snippet tab "tabular / array environment" b
-\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
-$0${2/((?<=.)c|l|r)|./(?1: & )/g}
-\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
-endsnippet
+####################
+# TABULARS, IMAGES #
+####################
 
-snippet fig "Figure environment" b
-\begin{figure}${2:[htpb]}
+snippet tab "table with nice booktabs lines" b
+\begin{table}
 	\centering
-	\includegraphics[width=${3:0.8}\linewidth]{${4:name.ext}}
-	\caption{${4/(\w+)\.\w+/\u$1/}$0}
-	\label{fig:${4/(\w+)\.\w+/$1/}}
-\end{figure}
+	\caption{${1:Table caption}.}
+	\begin{tabular}{${2:lcc}}
+		\toprule
+		\midrule
+		${0}
+		\bottomrule
+	\end{tabular}
+	\label{tab:${3:${1/(\w+)|\W+/(?1:\L$0\E:_)/g}}}
+\end{table}
 endsnippet
 
+snippet image "Include graphics" b
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{${1:image}}
+	\caption{${2:Image caption}.}
+	\label{fig:${3:${1/.*?([^\/]+?)(\.\w+)?$/$1/g}}}
+\end{figure}
+${0}
+endsnippet
+
+########################
+# ENUM, DESCR, ITEMIZE #
+########################
 snippet enum "Enumerate" b
 \begin{enumerate}
 	\item $0
@@ -46,11 +71,17 @@ snippet it "Individual item" b
 $0
 endsnippet
 
+#####################################
+# SECTIONS, CHAPTERS AND THEIR LIKE #
+#####################################
+
 snippet part "Part" b
 \part{${1:part name}}
 \label{prt:${2:${1/(\w+)|\W+/(?1:\L$0\E:_)/ga}}}
 
 ${0}
+
+% part $2 (end)
 endsnippet
 
 snippet cha "Chapter" b
@@ -58,6 +89,8 @@ snippet cha "Chapter" b
 \label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+
+% chapter $2 (end)
 endsnippet
 
 snippet sec "Section" b
@@ -65,20 +98,28 @@ snippet sec "Section" b
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+
+% section $2 (end)
 endsnippet
+
 
 snippet sub "Subsection" b
 \subsection{${1:subsection name}}
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+
+% subsection $2 (end)
 endsnippet
 
-snippet ssub "Subsubsection" b
+snippet "s(ub)?sub(section)?" "Subsubsection" br
 \subsubsection{${1:subsubsection name}}
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+
+% subsubsection $2 (end)
+
 endsnippet
 
 snippet par "Paragraph" b
@@ -86,19 +127,56 @@ snippet par "Paragraph" b
 \label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+
+% paragraph $2 (end)
 endsnippet
 
-snippet subp "Subparagraph" b
+
+snippet "subp(ar)?" "Subparagraph" br
 \subparagraph{${1:subparagraph name}}
 \label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+
+% subparagraph $2 (end)
 endsnippet
+
+################################################################################
+#                                     misc                                     #
+################################################################################
 
 snippet ni "Non-indented paragraph" b
 \noindent
 ${0}
 endsnippet
+
+snippet i "italic" w
+\textit{${1:word}} ${0}
+endsnippet
+
+snippet e "emph" w
+\emph{${1:word}} ${0}
+endsnippet
+
+snippet b "bold" w
+\textbf{${1:word}} ${0}
+endsnippet
+
+snippet tt "texttt" w
+\texttt{${1:word}} ${0}
+endsnippet
+
+snippet "mathf(rac)?" "mathfrac" wr
+\mathfrac{${1:word}} ${0}
+endsnippet
+
+snippet cite "cite / citep" w
+\cite${2}{${1:Author2012}} ${0}
+endsnippet
+
+###############
+#  Utilities  #
+###############
 
 snippet pac "Package" b
 \usepackage[${1:options}]{${2:package}}$0

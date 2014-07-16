@@ -11,7 +11,7 @@ endsnippet
 snippet ifndef "#ifndef ... #define ... #endif"
 #ifndef ${1/([A-Za-z0-9_]+).*/$1/}
 #define ${1:SYMBOL} ${2:value}
-#endif
+#endif  // $1
 endsnippet
 
 snippet #if "#if #endif" b
@@ -40,22 +40,22 @@ endsnippet
 snippet main "main() (main)"
 int main(int argc, char *argv[])
 {
-	${VISUAL}${0}
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
 	return 0;
 }
 endsnippet
 
-snippet for "for loop (for)"
-for (${2:i} = 0; $2 < ${1:count}; ${3:++$2})
+snippet fora "for loop (auto)"
+for (${1:const auto&} ${2:elem} : ${3:vec})
 {
-	${VISUAL}${0}
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
 }
 endsnippet
 
 snippet fori "for int loop (fori)"
 for (${4:int} ${2:i} = 0; $2 < ${1:count}; ${3:++$2})
 {
-	${VISUAL}${0}
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
 }
 endsnippet
 

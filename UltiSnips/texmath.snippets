@@ -3,6 +3,18 @@ priority -50
 ##############
 # MATH STUFF #
 ##############
+snippet "gat(her)?" "Gather" br
+\begin{gather}
+	$0
+\end{gather}
+endsnippet
+
+snippet "g(at)?(her)?nn" "Gather without number" br
+\begin{gather*}
+	$0
+\end{gather*}
+endsnippet
+
 snippet eq "Equation" b
 \begin{equation}
 	$0
@@ -36,6 +48,14 @@ snippet mat "Smart Matrix"
 	$0
 \end{$1matrix}
 endsnippet
+
+snippet "cas(es)?" "Cases (system of equations)" br
+\begin{cases}
+	${1:equation}, &\text{ if }${2:case}\\\\
+	${3}
+\end{cases}
+endsnippet
+
 
 snippet lr( "left( right)" w
 \left( ${1:${VISUAL}} \right)
