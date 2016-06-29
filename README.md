@@ -1,4 +1,4 @@
-Snipmate & UltiSnip Snippets
+UltiSnip Snippets
 ============================
 
 This repository contains snippets files for various programming languages.
@@ -9,7 +9,6 @@ other improvements already.
 Contents
 --------
 
-- `snippets/*`: snippets using snipmate format
 - `UltiSnips/*`: snippets using UltiSnips format
 
 Snippet engines supporting vim-snippets
