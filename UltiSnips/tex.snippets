@@ -92,7 +92,7 @@ endsnippet
 
 snippet ch "Chapter" b
 \chapter{${1:chapter name}}
-\label{ch:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4::\u$1$2$3)/ga}}}
+\label{ch:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
@@ -101,7 +101,7 @@ endsnippet
 
 snippet sec "Section" b
 \section{${1:section name}}
-\label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{sec:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
@@ -111,7 +111,7 @@ endsnippet
 
 snippet sub "Subsection" b
 \subsection{${1:subsection name}}
-\label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{sub:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
@@ -120,7 +120,7 @@ endsnippet
 
 snippet "s(ub)?sub(section)?" "Subsubsection" br
 \subsubsection{${1:subsubsection name}}
-\label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{subsub:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
@@ -130,7 +130,7 @@ endsnippet
 
 snippet par "Paragraph" b
 \paragraph{${1:paragraph name}}
-\label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{par:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
@@ -140,7 +140,7 @@ endsnippet
 
 snippet "subp(ar)?" "Subparagraph" br
 \subparagraph{${1:subparagraph name}}
-\label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{subpar:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
