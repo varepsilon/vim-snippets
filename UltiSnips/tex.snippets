@@ -92,7 +92,7 @@ endsnippet
 
 snippet ch "Chapter" b
 \chapter{${1:chapter name}}
-\label{ch:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(\l$1\l$2\l$3)/ga}}}
+\label{ch:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:\l:$1$2$3)/ga}}}
 
 ${0}
 
