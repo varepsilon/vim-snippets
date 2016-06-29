@@ -83,7 +83,7 @@ endsnippet
 
 snippet part "Part" b
 \part{${1:part name}}
-\label{prt:${2:${1/(\w+)|\W+/(?1:\L$0\E:_)/ga}}}
+\label{prt:${2:${1/(\w+)|\W+/(?1:\u$0:)/ga}}}
 
 ${0}
 
